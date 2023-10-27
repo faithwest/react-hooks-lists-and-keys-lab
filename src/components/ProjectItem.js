@@ -1,23 +1,16 @@
 import React from "react";
-import ProjectList from "./ProjectList";
 
-function ProjectItem(props) {
-  const { projectName, technologies } = props;
-
+function ProjectItem({ name, about, technologies }) {
+  const technologiesList = technologies.map((tech) => (
+    <span key={tech}>{tech}</span>
+  ));
   return (
-    <div className="project-card">
-      <h2>{projectName}</h2>
-      <div className="platforms">
-        {technologies && Array.isArray(technologies) ? (
-          technologies.map((technology, index) => (
-            <span key={index}>{technology}</span>
-          ))
-        ) : (
-          <p>No technologies available</p>
-        )}
-      </div>
+    <div className="project-item">
+      <h3>{name}</h3>
+      <p>{about}</p>
+      <div className="technologies">{technologiesList}</div>
     </div>
   );
 }
-export default ProjectItem;
 
+export default ProjectItem;
